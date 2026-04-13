@@ -1,0 +1,23 @@
+{
+  "name": "note-taking-ai-mcp",
+  "description": "MEOK AI Labs \u2014 Note Taking tools for AI agents and LLMs",
+  "vendor": "MEOK AI Labs",
+  "homepage": "https://meok.ai",
+  "repository": "https://github.com/CSOAI-ORG/note-taking-ai-mcp",
+  "runtime": "python",
+  "entrypoint": "server.py",
+  "tools": [
+    "create_note",
+    "search_notes",
+    "summarize_notes",
+    "export_markdown"
+  ],
+  "categories": [
+    "Productivity",
+    "Note Taking"
+  ],
+  "pricing": {
+    "free": "50 calls/day",
+    "pro": "$9/mo"
+  }
+}
