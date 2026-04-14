@@ -1,10 +1,48 @@
 name: note-taking-ai-mcp
-description: "MEOK AI Labs — Note Taking tools for AI agents and LLMs"
-vendor: MEOK AI Labs
-homepage: https://meok.ai
-repository: https://github.com/CSOAI-ORG/note-taking-ai-mcp
-license: MIT
-categories: [Productivity, Note Taking]
-tags: [note-taking, notes, knowledge-management, personal-wiki, zettelkasten]
-runtime: python
-entrypoint: server.py
+description: MCP server for AI-powered note management.
+version: 1.0.0
+tools:
+- name: create_note
+  description: Create a new note with title, content, optional comma-separated tags
+    and category.
+  parameters:
+  - name: title
+    type: string
+    required: true
+  - name: content
+    type: string
+    required: true
+  - name: tags
+    type: string
+    required: false
+  - name: category
+    type: string
+    required: false
+- name: search_notes
+  description: 'Search notes by keyword. search_in: all, title, content, tags.'
+  parameters:
+  - name: query
+    type: string
+    required: true
+  - name: search_in
+    type: string
+    required: false
+- name: summarize_notes
+  description: 'Summarize notes. note_ids: comma-separated IDs or empty for all. Extracts
+    key sentences.'
+  parameters:
+  - name: note_ids
+    type: string
+    required: false
+  - name: max_sentences
+    type: integer
+    required: false
+- name: export_markdown
+  description: 'Export notes as Markdown. note_ids: comma-separated or empty for all.'
+  parameters:
+  - name: note_ids
+    type: string
+    required: false
+  - name: include_metadata
+    type: boolean
+    required: false

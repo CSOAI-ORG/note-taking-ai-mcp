@@ -1,4 +1,9 @@
 """Note Taking AI MCP Server — Note management tools."""
+
+import sys, os
+sys.path.insert(0, os.path.expanduser('~/clawd/meok-labs-engine/shared'))
+from auth_middleware import check_access
+
 import hashlib
 import json
 import re
@@ -22,8 +27,12 @@ def _rate_check(tool: str) -> bool:
     return True
 
 @mcp.tool()
-def create_note(title: str, content: str, tags: str = "", category: str = "general") -> dict[str, Any]:
+def create_note(title: str, content: str, tags: str = "", category: str = "general", api_key: str = "") -> dict[str, Any]:
     """Create a new note with title, content, optional comma-separated tags and category."""
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+
     if not _rate_check("create_note"):
         return {"error": "Rate limit exceeded (50/day)"}
     tag_list = [t.strip() for t in tags.split(",") if t.strip()] if tags else []
@@ -38,8 +47,12 @@ def create_note(title: str, content: str, tags: str = "", category: str = "gener
     return {"note": note, "total_notes": len(_notes)}
 
 @mcp.tool()
-def search_notes(query: str, search_in: str = "all") -> dict[str, Any]:
+def search_notes(query: str, search_in: str = "all", api_key: str = "") -> dict[str, Any]:
     """Search notes by keyword. search_in: all, title, content, tags."""
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+
     if not _rate_check("search_notes"):
         return {"error": "Rate limit exceeded (50/day)"}
     q = query.lower()
@@ -57,8 +70,12 @@ def search_notes(query: str, search_in: str = "all") -> dict[str, Any]:
     return {"query": query, "results": results, "count": len(results)}
 
 @mcp.tool()
-def summarize_notes(note_ids: str = "", max_sentences: int = 3) -> dict[str, Any]:
+def summarize_notes(note_ids: str = "", max_sentences: int = 3, api_key: str = "") -> dict[str, Any]:
     """Summarize notes. note_ids: comma-separated IDs or empty for all. Extracts key sentences."""
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+
     if not _rate_check("summarize_notes"):
         return {"error": "Rate limit exceeded (50/day)"}
     ids = [i.strip() for i in note_ids.split(",") if i.strip()] if note_ids else None
@@ -78,8 +95,12 @@ def summarize_notes(note_ids: str = "", max_sentences: int = 3) -> dict[str, Any
     return {"summaries": summaries, "notes_processed": len(summaries)}
 
 @mcp.tool()
-def export_markdown(note_ids: str = "", include_metadata: bool = True) -> dict[str, Any]:
+def export_markdown(note_ids: str = "", include_metadata: bool = True, api_key: str = "") -> dict[str, Any]:
     """Export notes as Markdown. note_ids: comma-separated or empty for all."""
+    allowed, msg, tier = check_access(api_key)
+    if not allowed:
+        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+
     if not _rate_check("export_markdown"):
         return {"error": "Rate limit exceeded (50/day)"}
     ids = [i.strip() for i in note_ids.split(",") if i.strip()] if note_ids else None

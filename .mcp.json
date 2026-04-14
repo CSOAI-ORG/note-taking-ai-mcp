@@ -1,23 +1,82 @@
 {
   "name": "note-taking-ai-mcp",
-  "description": "MEOK AI Labs \u2014 Note Taking tools for AI agents and LLMs",
-  "vendor": "MEOK AI Labs",
-  "homepage": "https://meok.ai",
-  "repository": "https://github.com/CSOAI-ORG/note-taking-ai-mcp",
-  "runtime": "python",
-  "entrypoint": "server.py",
+  "description": "MCP server for AI-powered note management.",
+  "version": "1.0.0",
   "tools": [
-    "create_note",
-    "search_notes",
-    "summarize_notes",
-    "export_markdown"
-  ],
-  "categories": [
-    "Productivity",
-    "Note Taking"
-  ],
-  "pricing": {
-    "free": "50 calls/day",
-    "pro": "$9/mo"
-  }
+    {
+      "name": "create_note",
+      "description": "Create a new note with title, content, optional comma-separated tags and category.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "tags": {
+            "type": "string"
+          },
+          "category": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "title",
+          "content"
+        ]
+      }
+    },
+    {
+      "name": "search_notes",
+      "description": "Search notes by keyword. search_in: all, title, content, tags.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string"
+          },
+          "search_in": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "query"
+        ]
+      }
+    },
+    {
+      "name": "summarize_notes",
+      "description": "Summarize notes. note_ids: comma-separated IDs or empty for all. Extracts key sentences.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "note_ids": {
+            "type": "string"
+          },
+          "max_sentences": {
+            "type": "integer"
+          }
+        },
+        "required": []
+      }
+    },
+    {
+      "name": "export_markdown",
+      "description": "Export notes as Markdown. note_ids: comma-separated or empty for all.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "note_ids": {
+            "type": "string"
+          },
+          "include_metadata": {
+            "type": "boolean"
+          }
+        },
+        "required": []
+      }
+    }
+  ]
 }
