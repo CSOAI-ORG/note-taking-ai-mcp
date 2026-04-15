@@ -1,5 +1,5 @@
 name: note-taking-ai-mcp
-description: MCP server for AI-powered note management.
+description: MEOK AI Labs MCP Server
 version: 1.0.0
 tools:
 - name: create_note

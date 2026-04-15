@@ -12,7 +12,7 @@ from datetime import datetime
 from typing import Any
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("note-taking-ai-mcp")
+mcp = FastMCP("note-taking-ai", instructions="MEOK AI Labs MCP Server")
 _calls: dict[str, list[float]] = {}
 DAILY_LIMIT = 50
 _notes: list[dict] = []
