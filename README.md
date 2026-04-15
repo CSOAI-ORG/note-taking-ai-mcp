@@ -1,21 +1,55 @@
-# note-taking-ai-mcp
+# Note Taking AI
 
-MCP server for AI-powered note management.
+> By [MEOK AI Labs](https://meok.ai) — Note management with search, summarization, and Markdown export
 
-## Tools
+## Installation
 
-- **create_note** — Create notes with tags and categories
-- **search_notes** — Search notes by keyword across fields
-- **summarize_notes** — Extract key sentences from notes
-- **export_markdown** — Export notes as formatted Markdown
+```bash
+pip install note-taking-ai-mcp
+```
 
 ## Usage
 
 ```bash
-pip install mcp
 python server.py
 ```
 
-## Rate Limits
+## Tools
 
-50 calls/day per tool (free tier).
+### `create_note`
+Create a new note with title, content, optional comma-separated tags and category.
+
+**Parameters:**
+- `title` (str): Note title
+- `content` (str): Note content
+- `tags` (str): Comma-separated tags
+- `category` (str): Category (default: "general")
+
+### `search_notes`
+Search notes by keyword in title, content, or tags.
+
+**Parameters:**
+- `query` (str): Search query
+- `search_in` (str): Search scope: all, title, content, tags (default: "all")
+
+### `summarize_notes`
+Summarize notes by extracting key sentences.
+
+**Parameters:**
+- `note_ids` (str): Comma-separated note IDs (empty for all)
+- `max_sentences` (int): Max sentences per summary (default: 3)
+
+### `export_markdown`
+Export notes as formatted Markdown with optional metadata.
+
+**Parameters:**
+- `note_ids` (str): Comma-separated note IDs (empty for all)
+- `include_metadata` (bool): Include ID, category, date, tags (default: True)
+
+## Authentication
+
+Free tier: 15 calls/day. Upgrade at [meok.ai/pricing](https://meok.ai/pricing) for unlimited access.
+
+## License
+
+MIT — MEOK AI Labs
