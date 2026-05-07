@@ -54,6 +54,14 @@ def create_note(title: str, content: str, tags: str = "", category: str = "gener
     When NOT to use:
         Not suitable for real-time production decision-making without
         human review of results.
+
+    Args:
+        title (str): The title to analyze or process.
+        content (str): The content to analyze or process.
+        tags (str): The tags to analyze or process.
+        category (str): The category to analyze or process.
+        api_key (str): The api key to analyze or process.
+
     Behavioral Transparency:
         - Side Effects: This tool is read-only and produces no side effects. It does not modify
           any external state, databases, or files. All output is computed in-memory and returned
@@ -105,6 +113,12 @@ def search_notes(query: str, search_in: str = "all", api_key: str = "") -> dict[
     When NOT to use:
         Not suitable for real-time production decision-making without
         human review of results.
+
+    Args:
+        query (str): The query to analyze or process.
+        search_in (str): The search in to analyze or process.
+        api_key (str): The api key to analyze or process.
+
     Behavioral Transparency:
         - Side Effects: This tool is read-only and produces no side effects. It does not modify
           any external state, databases, or files. All output is computed in-memory and returned
@@ -159,6 +173,12 @@ def summarize_notes(note_ids: str = "", max_sentences: int = 3, api_key: str = "
     When NOT to use:
         Not suitable for real-time production decision-making without
         human review of results.
+
+    Args:
+        note_ids (str): The note ids to analyze or process.
+        max_sentences (int): The max sentences to analyze or process.
+        api_key (str): The api key to analyze or process.
+
     Behavioral Transparency:
         - Side Effects: This tool is read-only and produces no side effects. It does not modify
           any external state, databases, or files. All output is computed in-memory and returned
@@ -215,6 +235,12 @@ def export_markdown(note_ids: str = "", include_metadata: bool = True, api_key: 
     When NOT to use:
         Not suitable for real-time production decision-making without
         human review of results.
+
+    Args:
+        note_ids (str): The note ids to analyze or process.
+        include_metadata (bool): The include metadata to analyze or process.
+        api_key (str): The api key to analyze or process.
+
     Behavioral Transparency:
         - Side Effects: This tool is read-only and produces no side effects. It does not modify
           any external state, databases, or files. All output is computed in-memory and returned
