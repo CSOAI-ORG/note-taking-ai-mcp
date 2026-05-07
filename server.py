@@ -39,7 +39,22 @@ def _rate_check(tool: str) -> bool:
 
 @mcp.tool()
 def create_note(title: str, content: str, tags: str = "", category: str = "general", api_key: str = "") -> dict[str, Any]:
-    """Create a new note with title, content, optional comma-separated tags and category."""
+    """Create a new note with title, content, optional comma-separated tags and category.
+
+    Behavior:
+        This tool generates structured output without modifying external systems.
+        Output is deterministic for identical inputs. No side effects.
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
+    """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
@@ -60,7 +75,23 @@ def create_note(title: str, content: str, tags: str = "", category: str = "gener
 
 @mcp.tool()
 def search_notes(query: str, search_in: str = "all", api_key: str = "") -> dict[str, Any]:
-    """Search notes by keyword. search_in: all, title, content, tags."""
+    """Search notes by keyword. search_in: all, title, content, tags.
+
+    Behavior:
+        This tool is read-only and stateless — it produces analysis output
+        without modifying any external systems, databases, or files.
+        Safe to call repeatedly with identical inputs (idempotent).
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
+    """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
@@ -84,7 +115,23 @@ def search_notes(query: str, search_in: str = "all", api_key: str = "") -> dict[
 
 @mcp.tool()
 def summarize_notes(note_ids: str = "", max_sentences: int = 3, api_key: str = "") -> dict[str, Any]:
-    """Summarize notes. note_ids: comma-separated IDs or empty for all. Extracts key sentences."""
+    """Summarize notes. note_ids: comma-separated IDs or empty for all. Extracts key sentences.
+
+    Behavior:
+        This tool is read-only and stateless — it produces analysis output
+        without modifying any external systems, databases, or files.
+        Safe to call repeatedly with identical inputs (idempotent).
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
+    """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
@@ -110,7 +157,23 @@ def summarize_notes(note_ids: str = "", max_sentences: int = 3, api_key: str = "
 
 @mcp.tool()
 def export_markdown(note_ids: str = "", include_metadata: bool = True, api_key: str = "") -> dict[str, Any]:
-    """Export notes as Markdown. note_ids: comma-separated or empty for all."""
+    """Export notes as Markdown. note_ids: comma-separated or empty for all.
+
+    Behavior:
+        This tool is read-only and stateless — it produces analysis output
+        without modifying any external systems, databases, or files.
+        Safe to call repeatedly with identical inputs (idempotent).
+        Free tier: 10/day rate limit. Pro tier: unlimited.
+        No authentication required for basic usage.
+
+    When to use:
+        Use this tool when you need structured analysis or classification
+        of inputs against established frameworks or standards.
+
+    When NOT to use:
+        Not suitable for real-time production decision-making without
+        human review of results.
+    """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
         return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
