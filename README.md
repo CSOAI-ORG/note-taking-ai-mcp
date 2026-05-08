@@ -1,45 +1,58 @@
-[![note-taking-ai-mcp MCP server](https://glama.ai/mcp/servers/CSOAI-ORG/note-taking-ai-mcp/badges/score.svg)](https://glama.ai/mcp/servers/CSOAI-ORG/note-taking-ai-mcp)
-[![MCP Registry](https://img.shields.io/badge/MCP_Registry-Published-green)](https://registry.modelcontextprotocol.io)
-[![PyPI](https://img.shields.io/pypi/v/note-taking-ai-mcp)](https://pypi.org/project/note-taking-ai-mcp/)
-
-[![note-taking-ai-mcp MCP server](https://glama.ai/mcp/servers/CSOAI-ORG/note-taking-ai-mcp/badges/card.svg)](https://glama.ai/mcp/servers/CSOAI-ORG/note-taking-ai-mcp)
-
 <div align="center">
 
-[![GitHub stars](https://img.shields.io/github/stars/CSOAI-ORG/note-taking-ai-mcp)](https://github.com/CSOAI-ORG/note-taking-ai-mcp/stargazers)
+# Note Taking Ai MCP
 
-# unoteU takingU aiU mcp
+**Note Taking AI MCP Server — Note management tools.**
 
-****
-
-[![npm version](https://img.shields.io/npm/v/@meok-ai/note-taking-ai-mcp)](https://www.npmjs.com/package/@meok-ai/note-taking-ai-mcp)
+[![PyPI](https://img.shields.io/pypi/v/meok-note-taking-ai-mcp)](https://pypi.org/project/meok-note-taking-ai-mcp/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![MEOK AI Labs](https://img.shields.io/badge/MEOK_AI_Labs-255+_servers-purple)](https://meok.ai)
-
-[Installation](#installation) · [Docs](https://csoai.org) · [Report Bug](https://github.com/CSOAI-ORG/note-taking-ai-mcp/issues)
+[![MEOK AI Labs](https://img.shields.io/badge/MEOK_AI_Labs-MCP_Server-purple)](https://meok.ai)
 
 </div>
 
----
+## Overview
+
+Note Taking AI MCP Server — Note management tools.
+
+## Tools
+
+| Tool | Description |
+|------|-------------|
+| `create_note` | Create a new note with title, content, optional comma-separated tags and categor |
+| `search_notes` | Search notes by keyword. search_in: all, title, content, tags. |
+| `summarize_notes` | Summarize notes. note_ids: comma-separated IDs or empty for all. Extracts key se |
+| `export_markdown` | Export notes as Markdown. note_ids: comma-separated or empty for all. |
 
 ## Installation
 
 ```bash
-pip install note-taking-ai-mcp
-# or
-npm install -g @meok-ai/note-taking-ai-mcp
+pip install meok-note-taking-ai-mcp
 ```
 
-## Quick Start
+## Usage with Claude Desktop
 
-See the project repository for full documentation and examples.
+Add to your Claude Desktop MCP config (`claude_desktop_config.json`):
 
-## Enterprise Support
+```json
+{
+  "mcpServers": {
+    "note-taking-ai": {
+      "command": "python",
+      "args": ["-m", "meok_note_taking_ai_mcp.server"]
+    }
+  }
+}
+```
 
-- 📧 nicholas@csoai.org
-- 🌐 [CSOAI.org](https://csoai.org)
+## Usage with FastMCP
+
+```python
+from mcp.server.fastmcp import FastMCP
+
+# This server exposes 4 tool(s) via MCP
+# See server.py for full implementation
+```
 
 ## License
 
-MIT © [CSOAI](https://csoai.org)
-<!-- mcp-name: io.github.CSOAI-ORG/note-taking-ai-mcp -->
+MIT © [MEOK AI Labs](https://meok.ai)
