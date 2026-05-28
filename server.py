@@ -1,7 +1,6 @@
 """Note Taking AI MCP Server — Note management tools."""
 
 import sys, os
-sys.path.insert(0, os.path.expanduser('~/clawd/meok-labs-engine/shared'))
 from auth_middleware import check_access
 
 import hashlib
@@ -13,6 +12,15 @@ from typing import Any
 from mcp.server.fastmcp import FastMCP
 
 from collections import defaultdict
+
+STRIPE_199 = "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K"
+
+def _add_upgrade_tail(response, tier="free"):
+    """Append upgrade nudge to free-tier success responses."""
+    if isinstance(response, dict) and tier == "free":
+        response["_upgrade_note"] = "Pro tier: unlimited calls + priority support. Upgrade: " + STRIPE_199
+    return response
+
 
 FREE_DAILY_LIMIT = 15
 _usage = defaultdict(list)
@@ -79,7 +87,7 @@ def create_note(title: str, content: str, tags: str = "", category: str = "gener
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": STRIPE_199}
     if err := _rl(): return err
 
     if not _rate_check("create_note"):
@@ -136,7 +144,7 @@ def search_notes(query: str, search_in: str = "all", api_key: str = "") -> dict[
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": STRIPE_199}
     if err := _rl(): return err
 
     if not _rate_check("search_notes"):
@@ -196,7 +204,7 @@ def summarize_notes(note_ids: str = "", max_sentences: int = 3, api_key: str = "
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": STRIPE_199}
     if err := _rl(): return err
 
     if not _rate_check("summarize_notes"):
@@ -258,7 +266,7 @@ def export_markdown(note_ids: str = "", include_metadata: bool = True, api_key: 
     """
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return {"error": msg, "upgrade_url": "https://meok.ai/pricing"}
+        return {"error": msg, "upgrade_url": STRIPE_199}
     if err := _rl(): return err
 
     if not _rate_check("export_markdown"):
@@ -279,5 +287,8 @@ def export_markdown(note_ids: str = "", include_metadata: bool = True, api_key: 
         parts.append(md)
     return {"markdown": "\n\n---\n\n".join(parts), "notes_exported": len(parts)}
 
-if __name__ == "__main__":
+def main():
     mcp.run()
+
+if __name__ == '__main__':
+    main()
