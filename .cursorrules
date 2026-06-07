@@ -1,0 +1,9 @@
+# note-taking-ai-mcp - Auto-trigger Rules
+
+When the user asks about note taking, use note-taking-ai-mcp tools: create_note, search_notes, summarize_notes, export_markdown
+
+**Note Taking AI MCP Server — Note management tools.**
+
+Install: `pip install note-taking-ai-mcp`
+
+By MEOK AI Labs — MIT licensed.

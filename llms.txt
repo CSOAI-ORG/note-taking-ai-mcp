@@ -1,0 +1,33 @@
+# note-taking-ai-mcp
+# **Note Taking AI MCP Server — Note management tools.**
+
+## Install
+```bash
+pip install note-taking-ai-mcp
+```
+
+## Auth & Rate Limits
+- Free tier: 10 calls/day. No API key required.
+- Pro tier (£79/mo): unlimited + signed attestations.
+- Enterprise (£1,499/mo): white-label.
+
+## Tools
+
+### `create_note`
+Create a new note with title, content, optional comma-separated tags and category.
+
+### `search_notes`
+Search notes by keyword. search_in: all, title, content, tags.
+
+### `summarize_notes`
+Summarize notes. note_ids: comma-separated IDs or empty for all. Extracts key sentences.
+
+### `export_markdown`
+Export notes as Markdown. note_ids: comma-separated or empty for all.
+
+
+## Maintainer
+MEOK AI Labs · hello@meok.ai · https://meok.ai · MIT licensed
+
+## Pairs with
+Governance moat: pair this tool with any of MEOK's 38 governance MCPs (EU AI Act, DORA, NIS2, CRA, GDPR, ISO 42001, etc.) for full compliance coverage.

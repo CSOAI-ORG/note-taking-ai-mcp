@@ -1,0 +1,25 @@
+{
+  "name": "note-taking-ai-mcp",
+  "title": "Note Taking Ai Mcp",
+  "description": "Note Taking Ai automation via MCP. Includes create note, search notes, summarize notes. By MEOK AI Labs.",
+  "version": "1.0.7",
+  "homepage": "https://meok.ai",
+  "license": "MIT",
+  "transport": {
+    "type": "stdio"
+  },
+  "tools": [
+    {
+      "name": "create_note"
+    },
+    {
+      "name": "search_notes"
+    },
+    {
+      "name": "summarize_notes"
+    },
+    {
+      "name": "export_markdown"
+    }
+  ]
+}

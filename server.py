@@ -1,4 +1,5 @@
-"""Note Taking AI MCP Server — Note management tools."""
+"""
+Note Taking AI MCP Server — Note management tools."""
 
 import sys, os
 from auth_middleware import check_access
