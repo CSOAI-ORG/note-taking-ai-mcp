@@ -1,0 +1,22 @@
+{
+  "acpVersion": "0.1",
+  "agent": {
+    "name": "note-taking-ai-mcp",
+    "description": "Note Taking Ai MCP Server by MEOK AI Labs",
+    "version": "1.0.7",
+    "provider": "MEOK AI Labs",
+    "interfaces": [
+      {
+        "type": "mcp",
+        "transport": "stdio",
+        "package": "note-taking-ai-mcp"
+      }
+    ],
+    "capabilities": [
+      "create_note",
+      "search_notes",
+      "summarize_notes",
+      "export_markdown"
+    ]
+  }
+}

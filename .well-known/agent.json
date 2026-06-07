@@ -1,0 +1,59 @@
+{
+  "name": "note-taking-ai-mcp",
+  "description": "Note Taking Ai MCP Server by MEOK AI Labs",
+  "url": "https://proofof.ai/scorecard/note-taking-ai-mcp.html",
+  "version": "1.0.7",
+  "protocolVersion": "0.2.0",
+  "provider": {
+    "organization": "MEOK AI Labs",
+    "url": "https://meok.ai"
+  },
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": [
+    "text"
+  ],
+  "defaultOutputModes": [
+    "text"
+  ],
+  "skills": [
+    {
+      "id": "create_note",
+      "name": "Create Note",
+      "description": "create_note via note-taking-ai-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "search_notes",
+      "name": "Search Notes",
+      "description": "search_notes via note-taking-ai-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "summarize_notes",
+      "name": "Summarize Notes",
+      "description": "summarize_notes via note-taking-ai-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "export_markdown",
+      "name": "Export Markdown",
+      "description": "export_markdown via note-taking-ai-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    }
+  ]
+}
