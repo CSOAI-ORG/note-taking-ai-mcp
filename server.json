@@ -4,9 +4,8 @@
   "version": "1.0.8",
   "description": "Note Taking Ai MCP Server by MEOK AI Labs",
   "repository": {
-    "type": "git",
     "url": "https://github.com/CSOAI-ORG/note-taking-ai-mcp",
-    "source": "https://github.com/CSOAI-ORG/note-taking-ai-mcp"
+    "source": "github"
   },
   "packages": [
     {
